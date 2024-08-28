@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+    <node pkg="bt_bumpgo" type="bt_bumpgo_main" name="bt_bumpgo_main" output="screen">
+        <param name="use_sim_time" value="true"/>
+        
+    </node>
+
+    <node pkg="monitor" type="monitor_0" name="monitor_0" output="screen">
+        <param name="use_sim_time" value="true"/>
+    </node>
+</launch>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<root main_tree_to_execute="MainTree">
+
+  <BehaviorTree ID="MainTree">
+    <Sequence name="Main Sequence">
+      
+      <!-- Move the robot forward -->
+      <Action ID="Forward" name="Move Forward"/>
+      
+      <!-- Check if an obstacle is detected -->
+      <Condition ID="IsObstacle" name="Is Obstacle Detected"/>
+      
+      <!-- If an obstacle is detected, stop and turn -->
+      <Fallback name="Avoid Obstacle">
+        <Sequence>
+          <!-- Move backward -->
+          <Action ID="Back" name="Move Back"/>
+          
+          <!-- Turn the robot -->
+          <Action ID="Turn" name="Turn"/>
+        </Sequence>
+        
+        <!-- No obstacle detected, continue forward -->
+        <Action ID="Forward" name="Move Forward"/>
+      </Fallback>
+      
+    </Sequence>
+  </BehaviorTree>
+
+</root>
