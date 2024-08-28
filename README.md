@@ -149,6 +149,6 @@ colcon build
 
 ### **Output**
 
-- A `log.txt` file will be generated in your repository directory.
+- A `log.txt` file will be generated in your repository directory. ( for offline monitor), for online monitor a server will run on http://127.0.0.8080/
 
 ---
