@@ -1,7 +1,7 @@
 # Behaviourtrees_rosmonitoring
 Instructions to implement Behaviour Trees and Ros Monitoring 
 
-Required Ros2 Humble, behaviour_trees_v3, Groot installation for visualization of Behaviour trees
+Required Ros2 Humble, behaviour_trees_v3, Groot installation for visualization of Behaviour trees 
 git clone current repo to your ros_ws
 
 $ mkdir -p ros_ws/src
