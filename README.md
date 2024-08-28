@@ -1,3 +1,7 @@
+instructions for using both the offline and online monitors with ROSMonitoring:
+
+---
+
 # **Behaviourtrees_rosmonitoring**
 
 ## Instructions to Implement Behaviour Trees and ROS Monitoring
@@ -93,10 +97,58 @@ colcon build
    ros2 launch src/Bump-and-Go-with-Behavior-Trees/launch/run_launch.py
    ```
 
+### **Analyzing the Log File with Offline Oracles**
+
+1. **Copy the Log File:**
+
+   ```bash
+   cp ~/ros_ws/log.txt ~/ROSMonitoring/oracle/
+   ```
+
+2. **Analyze the Log File with the RML Oracle:**
+
+   ```bash
+   cd ~/ROSMonitoring/oracle/RMLOracle/prolog/
+   sh offline_monitor.sh ../rml/test.pl ../../log.txt
+   ```
+
+3. **Analyze the Log File with the TL Oracle:**
+
+   ```bash
+   cd ~/ROSMonitoring/oracle/TLOracle/
+   ./oracle.py --offline --property property --trace ../../log.txt --discrete
+   ```
+
+### **Adding a Monitor for Online Analysis**
+
+1. **Generate the Online Monitor:**
+
+   ```bash
+   cd ~/ROSMonitoring/generator/ros2_devel/
+   chmod +x generator
+   ./generator --config_file online_config.yaml
+   ```
+
+2. **Run the Online Monitor with RML Oracle:**
+
+   Before running the online monitor, execute the web server for Prolog:
+
+   ```bash
+   cd ~/ROSMonitoring/oracle/RMLOracle/prolog/
+   sh online_monitor.sh ../rml/test.pl 8080
+   ```
+
+   This starts the server at `http://127.0.0.1:8080/`.
+
+3. **Run the Online Oracle with TL Properties:**
+
+   ```bash
+   cd ~/ROSMonitoring/oracle/TLOracle/
+   ./oracle.py --online --property property --port 8080 --discrete
+   ```
+
 ### **Output**
 
 - A `log.txt` file will be generated in your repository directory.
 
 ---
-
-You can copy and paste this content directly into the README file on GitHub to provide a clean, organized set of instructions.
