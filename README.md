@@ -1,57 +1,102 @@
-# Behaviourtrees_rosmonitoring
-Instructions to implement Behaviour Trees and Ros Monitoring 
+# **Behaviourtrees_rosmonitoring**
 
-Required Ros2 Humble, behaviour_trees_v3, Groot installation for visualization of Behaviour trees 
-git clone current repo to your ros_ws
+## Instructions to Implement Behaviour Trees and ROS Monitoring
 
-$ mkdir -p ros_ws/src
-$ cd ros_ws/src
-$ git clone <current_repo_url>
-$ cd ros_ws
-$ colcon build
-$ ros2 run bt_bumpgo bt_bumpgo_main
-$ ros2 run groot Groot ( or ros2 run groot Groot)
-  select monitor -> start -> connect local ( you can visualize behaviour trees graph)
+### **Prerequisites**
+- ROS 2 Humble
+- `behaviortree_cpp_v3` library
+- Groot (for visualizing behavior trees)
 
-Implementing Ros Monitoring
-git clone this RosMonitoring Package https://github.com/autonomy-and-verification-uol/ROSMonitoring.git ( Install dependencies)
- $ cd ~/
- $ git clone https://github.com/autonomy-and-verification-uol/ROSMonitoring.git
- $ cd ROSMonitoring
- $ git checkout ros2
+### **Installation Steps**
 
- Create a simple Offline monitor
- copy offline config file available in current git repo to RosMonitoring Repo
- ( There is no need to keep RosMonitoring repo in your Ros Workspace, it can be executed seperately)
-$ cd ~/ROSMonitoring/generator/ros2_devel/
-$ chmod +x generator
-$ python3 ./generator --config_file offline_config.yaml
+1. **Clone the Repository:**
 
-#to get rid of any errors ( follow these instructions in your ros_ws)
-$ rm -rf build 
-$ rm -rf install 
-$ rm -rf log
-#sourcing ros 2
-$ source /opt/ros/humble/setup.bash 
-#building
-$ colcon build
+   Open a terminal and execute the following commands:
 
-In a terminal we do:
-$ cd ~/ros_ws/
-$ . install/setup.bash
-$ ros2 launch src/monitor/launch/monitor.launch
+   ```bash
+   mkdir -p ~/ros_ws/src
+   cd ~/ros_ws/src
+   git clone <current_repo_url>
+   cd ~/ros_ws
+   colcon build
+   ```
 
-Then, in another terminal we do:
+2. **Run the Behavior Tree:**
 
-$ cd ~/ros_ws/
-$ . install/setup.bash
-$ ros2 launch src/Bump-and-Go-with-Behavior-Trees/launch/run_instrumented.launch ( you can execute`this command src/Bump-and-Go-with-Behavior-Trees/launch/run_launch.py)
+   ```bash
+   ros2 run bt_bumpgo bt_bumpgo_main
+   ros2 run groot Groot  # Start Groot for visualization
+   ```
 
-log.txt file will be generated in your repo
+   In Groot:
+   - Select `Monitor` -> `Start` -> `Connect Local` to visualize the behavior tree graph.
 
+### **Implementing ROS Monitoring**
 
+1. **Clone the ROSMonitoring Package:**
 
+   Clone the ROSMonitoring package from the repository:
 
+   ```bash
+   cd ~/
+   git clone https://github.com/autonomy-and-verification-uol/ROSMonitoring.git
+   cd ROSMonitoring
+   git checkout ros2
+   ```
 
+2. **Create a Simple Offline Monitor:**
 
+   - Copy the offline configuration file from the current repository to the ROSMonitoring repository.
+   - The ROSMonitoring repository does not need to be in your ROS workspace; it can be executed separately.
 
+   ```bash
+   cd ~/ROSMonitoring/generator/ros2_devel/
+   chmod +x generator
+   python3 ./generator --config_file offline_config.yaml
+   ```
+
+### **To Resolve Build Errors**
+
+If you encounter any errors, follow these steps in your `ros_ws`:
+
+```bash
+rm -rf build install log
+source /opt/ros/humble/setup.bash
+colcon build
+```
+
+### **Launching the Monitoring Tools**
+
+1. **Start the ROS Monitoring Tool:**
+
+   In a terminal, run:
+
+   ```bash
+   cd ~/ros_ws/
+   . install/setup.bash
+   ros2 launch src/monitor/launch/monitor.launch
+   ```
+
+2. **Run the Instrumented Launch File:**
+
+   In another terminal, execute:
+
+   ```bash
+   cd ~/ros_ws/
+   . install/setup.bash
+   ros2 launch src/Bump-and-Go-with-Behavior-Trees/launch/run_instrumented.launch
+   ```
+
+   Or use:
+
+   ```bash
+   ros2 launch src/Bump-and-Go-with-Behavior-Trees/launch/run_launch.py
+   ```
+
+### **Output**
+
+- A `log.txt` file will be generated in your repository directory.
+
+---
+
+You can copy and paste this content directly into the README file on GitHub to provide a clean, organized set of instructions.
